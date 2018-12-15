@@ -3,7 +3,7 @@ import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angula
 import { UploadAssetDialogComponent } from '../../upload-asset-dialog/upload-asset-dialog.component';
 
 @Component({
-  selector: 'app-your-assets',
+  selector: 'your-assets',
   templateUrl: './your-assets.component.html',
   styleUrls: ['./your-assets.component.css']
 })
