@@ -5,7 +5,7 @@ import { UploadAssetDialogComponent } from '../../upload-asset-dialog/upload-ass
 @Component({
   selector: 'your-assets',
   templateUrl: './your-assets.component.html',
-  styleUrls: ['./your-assets.component.css']
+  styleUrls: ['./your-assets.component.scss']
 })
 export class YourAssetsComponent implements OnInit {
 
