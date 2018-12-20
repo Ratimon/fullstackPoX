@@ -4,23 +4,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {UploadModule} from '../upload/upload.module'
+
 import { YourAssetsComponent } from './containers/your-assets/your-assets.component';
-import { UploadAssetDialogComponent } from './upload-asset-dialog/upload-asset-dialog.component';
 
 @NgModule({
     declarations: [
       YourAssetsComponent,
-      UploadAssetDialogComponent
-    ],
-    entryComponents: [
-      UploadAssetDialogComponent
     ],
     imports: [
       CommonModule,
       MatCardModule,
       MatButtonModule,
       MatToolbarModule,
-      MatDialogModule
+      MatDialogModule,
+      UploadModule
     ],
     exports: [
     YourAssetsComponent,

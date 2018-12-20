@@ -1,8 +1,10 @@
 
-    <mat-sidenav #start (click)="start.close()">
-        
+    <mat-sidenav #start >
+        <button mat-icon-button (click)="start.close()">
+                <mat-icon>menu</mat-icon>
+        </button>
         <mat-nav-list *ngFor="let list of lists">
-            <a mat-list-item routerLink="/" (click)="start.close()" >
+            <a mat-list-item routerLink="/{{list.path}}" >
               <mat-icon>{{list.icon}}</mat-icon>
               <span>{{list.name}}</span>
             </a>
@@ -11,7 +13,7 @@
     </mat-sidenav>
 
     <mat-toolbar color="primary">
-        <button mat-icon-button (click)="start.toggle()">
+        <button mat-icon-button (click)="start.open()">
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar>

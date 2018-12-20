@@ -1,31 +1,56 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button'
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import { MatIconModule } from "@angular/material/icon";
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {
+  MatButtonModule,
+  MatSidenavModule,
+  MatListModule,
+  MatIconModule,
+  MatToolbarModule
+} from '@angular/material';
 import { YourAssetsModule } from '../your-assets/your-assets.module';
+import { UploadModule } from '../upload/upload.module';
+import { Routes, RouterModule } from '@angular/router';
+
+import {
+  StoreRouterConnectingModule,
+  RouterStateSerializer,
+} from '@ngrx/router-store';
+
+import { StoreModule, MetaReducer } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { reducers, effects, CustomSerializer } from './store/index';
+
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { environment } from '../environments/environment'; // Angular CLI environment
 
 import { AppComponent } from './containers/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { YourAssetsComponent} from '../your-assets/containers/your-assets/your-assets.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+// import {UploadComponent} from '../upload/upload/upload.component'
 
-import { RouterModule, Routes } from '@angular/router';
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]: [];
 
-
-
-const routes: Routes = [
+export const ROUTES: Routes = [
   { path: '',
-    component: YourAssetsComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: 'your-assets'
+  },
+  { path: 'your-assets',
+    component: YourAssetsComponent
+  },
+  { path: 'upload',
+    loadChildren: '../upload/upload.module#UploadModule'
   },
   { path: '**',
     component: NotFoundComponent,
-  }    
+  }   
+  
 ];
 
 @NgModule({
@@ -33,23 +58,23 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     NotFoundComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(
-      routes),
+    RouterModule.forRoot(ROUTES),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot(effects),
+    StoreRouterConnectingModule,
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    YourAssetsModule
+    YourAssetsModule,
+    UploadModule
   ],
-  // exports : [
-  //   MatSidenavModule
-  // ],
   providers: [],
   bootstrap: [AppComponent]
 })

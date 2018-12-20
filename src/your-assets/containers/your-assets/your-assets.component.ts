@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { UploadAssetDialogComponent } from '../../upload-asset-dialog/upload-asset-dialog.component';
+import {MatDialog} from '@angular/material';
+
+// import { UploadComponent} from '../../upload/upload/upload.component';
 
 @Component({
   selector: 'your-assets',
@@ -9,18 +10,9 @@ import { UploadAssetDialogComponent } from '../../upload-asset-dialog/upload-ass
 })
 export class YourAssetsComponent implements OnInit {
 
-  constructor(private dialog : MatDialog) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-  }
-
-  upload(){
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = false;
-
-    this.dialog.open(UploadAssetDialogComponent, dialogConfig);
   }
 
 }
