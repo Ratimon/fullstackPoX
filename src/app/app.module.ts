@@ -8,8 +8,8 @@ import {
   MatIconModule,
   MatToolbarModule
 } from '@angular/material';
+
 import { YourAssetsModule } from '../your-assets/your-assets.module';
-import { UploadModule } from '../upload/upload.module';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
@@ -37,17 +37,20 @@ import { FooterComponent } from './components/footer/footer.component';
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]: [];
 
 export const ROUTES: Routes = [
-  { path: '',
+  {
+    path: '',
     pathMatch: 'full',
     redirectTo: 'your-assets'
   },
-  { path: 'your-assets',
+  { 
+    path: 'your-assets',
     component: YourAssetsComponent
   },
-  { path: 'upload',
-    loadChildren: '../upload/upload.module#UploadModule'
-  },
-  { path: '**',
+  // { path: 'upload',
+  //   loadChildren: '../upload/upload.module#UploadModule'
+  // },
+  {
+    path: '**',
     component: NotFoundComponent,
   }   
   
@@ -67,15 +70,15 @@ export const ROUTES: Routes = [
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
+    environment.development ? StoreDevtoolsModule.instrument() : [],
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    YourAssetsModule,
-    UploadModule
+    YourAssetsModule
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
