@@ -1,18 +1,27 @@
-.add-files-btn {
-    float: right;
-  }
+
   
-  :host {
-    height: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  }
-  
-  .actions {
+.actions {
     justify-content: flex-end;
-  }
+}
   
-  .container {
+.container {
     height: 100%;
-  }
+}
+
+
+mat-spinner {
+  margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}

@@ -29,10 +29,9 @@ import { environment } from '../environments/environment'; // Angular CLI enviro
 
 import { AppComponent } from './containers/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { YourAssetsComponent} from '../your-assets/containers/your-assets/your-assets.component'
+import { AssetsListsComponent} from '../your-assets/containers/assets-lists/assets-lists.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-// import {UploadComponent} from '../upload/upload/upload.component'
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]: [];
 
@@ -40,12 +39,21 @@ export const ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'your-assets'
+    redirectTo: 'assets-lists'
   },
-  { 
-    path: 'your-assets',
-    component: YourAssetsComponent
-  },
+  // { 
+  //   path: 'assets-lists',
+  //   component: AssetsListsComponent,
+  //   children: [{
+  //     path: 'upload',
+  //     component: UploadComponent
+  //   }]
+  // },
+
+  // {
+  //   path: 'upload',
+  //   component: UploadComponent,
+  // },
   // { path: 'upload',
   //   loadChildren: '../upload/upload.module#UploadModule'
   // },

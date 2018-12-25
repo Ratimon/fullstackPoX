@@ -1,57 +1,52 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { MatDialogRef } from '@angular/material';
 
+import { mimeType } from "./mime-type.validator";
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent{
+export class DialogComponent implements OnInit {
 
-  @ViewChild('file') file : ElementRef;
-
-  // progress;
-  encodedImage : string;
-  primaryButtonText  : string = 'Upload';
-  showCancelButton  : boolean = true; 
-  uploading : boolean = false;
-  uploadSuccessful  : boolean = false;
+  form: FormGroup;
+  isLoaded : boolean = false;
+  imagePreview: string;
   
+  @Output() picked = new EventEmitter<String>();
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<DialogComponent>,
+    private router: Router
+  ) {}
 
-  addFile() {
-    this.file.nativeElement.click();
-    this.uploading = true
-    // The dialog should not be closed while uploading
-    this.dialogRef.disableClose = true;
+  ngOnInit() {
+    this.form = new FormGroup({
+      image: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
+    });   
   }
 
-  onFileAdded() {
-    const { file } = this.file.nativeElement.files[0];
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];  
+    this.form.patchValue({ image: file });
+    this.form.get("image").updateValueAndValidity();
+    this.isLoaded = true
     const reader = new FileReader();
-    reader.onload = (event) => {
-      // Adjust the state variables
-      // The file's text will be printed here
-      this.encodedImage = event.target.result;
-      // ... and the component is no longer uploading
-      this.uploading = false
-      // ... the upload was successful...
-      this.uploadSuccessful = true;
-      // Hide the cancel-button
-      this.showCancelButton = false;
-      // The OK-button should have the text "Finish" now
-      this.primaryButtonText = 'Next';
-      // ... the dialog can be closed again...
-      this.dialogRef.disableClose = false;
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+      this.picked.emit(reader.result);
     };
-
     reader.readAsDataURL(file);
-    // if everything was uploaded already, just close the dialog
-    return this.dialogRef.close()
   }
 
-  
-  
+  nextStep() {
+     this.router.navigate(["/register"]);
+  }
+
 }
