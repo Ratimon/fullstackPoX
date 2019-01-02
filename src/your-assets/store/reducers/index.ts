@@ -1,18 +1,17 @@
-// export * from './upload.reducer';
+// export * from './register.reducer';
 
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
-import * as fromUpload from './upload.reducer';
-// import * as fromToppings from './toppings.reducer';
+import * as fromRegister from './register.reducer';
 
 export interface YourAssetsState {
-  upload: fromUpload.UploadState;
+  register: fromRegister.RegisterState;
 }
 
 export const reducers: ActionReducerMap<YourAssetsState> = {
-  upload: fromUpload.reducer,
+  register: fromRegister.reducer,
 };
 
-// export const getProductsState = createFeatureSelector<ProductsState>(
-//   'yourassets'
-// );
+export const getYourAssetsState = createFeatureSelector<YourAssetsState>(
+  'yourassets'
+);

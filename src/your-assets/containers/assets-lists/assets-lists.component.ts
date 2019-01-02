@@ -5,9 +5,9 @@ import { DialogComponent } from '../../components/dialog/dialog.component';
 
 // import * as fromStore from '../../store/reducers';
 // import * as fromStore from '../../store/index';
-import * as fromStore from '../../store/reducers/upload.reducer';
+import * as fromStore from '../../store/reducers/register.reducer';
 import * as fromAction from '../../store/actions';
-// import * as fromAction from '../../store/actions/upload.action';
+// import * as fromAction from '../../store/actions/register.action';
 
 
 @Component({
@@ -18,7 +18,7 @@ import * as fromAction from '../../store/actions';
 export class AssetsListsComponent implements OnInit {
 
   constructor(
-    private store: Store<fromStore.UploadState>,
+    private store: Store<fromStore.RegisterState>,
     public dialog: MatDialog
   ) {}
 
@@ -28,8 +28,8 @@ export class AssetsListsComponent implements OnInit {
   public openUploadDialog() {
     let dialogRef = this.dialog.open(DialogComponent, { width: '50%', height: '50%' });
     const sub = dialogRef.componentInstance.picked.subscribe((data) => {
-      console.log(data);
-      this.store.dispatch(new fromAction.UploadAsset(data));
+      // console.log(data);
+      // this.store.dispatch(new fromAction.UploadAsset(data));
     });
     dialogRef.afterClosed().subscribe(() => {
       sub.unsubscribe();

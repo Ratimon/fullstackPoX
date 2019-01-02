@@ -1,0 +1,16 @@
+
+<form [formGroup]="hashForm">
+    <h2 class="mat-title">Unique Hash of Your Asset</h2>
+    <h3 class="mat-subheading-2">Click Next to Register your Asset</h3>
+        
+
+    <h3 class="mat-subheading-2">hash </h3>
+    <mat-form-field>
+        <input matInput  formControlName="hash" required>
+    </mat-form-field>
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+    </div>
+    
+</form>

@@ -1,1 +1,1 @@
-export * from './upload.action';
+export * from './register.action';

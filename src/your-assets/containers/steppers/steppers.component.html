@@ -1,33 +1,32 @@
-<mat-horizontal-stepper class="register-stepper" labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
+<!-- <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="2" rowspan="4" style.background="lightblue">
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="4" style.background="lightgreen">
+            
+        </mat-grid-tile>
+</mat-grid-list> -->
+
+
+<mat-horizontal-stepper class="register-stepper" labelPosition="bottom" linear #stepper>
+    <mat-step [stepControl]="creditialForm" >
+        <ng-template matStepLabel>Enter Creditials</ng-template>
+        <!-- <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview ">
+                <img [src]="imagePreview" >
+        </div> -->
+        <creditial-step (changeCreditials)='onCreditialsChange($event)'> </creditial-step>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" optional>
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
+
+
+    <mat-step [stepControl]="hashForm" >
+            <ng-template matStepLabel >Generate Unique Hash</ng-template>
+            <hash-step (hash)='onHash($event)'></hash-step>
     </mat-step>
+    
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <ng-template matStepLabel>Register</ng-template>
+
+        <confirm-step></confirm-step>
+
     </mat-step>
+
 </mat-horizontal-stepper>

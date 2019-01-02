@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
@@ -41,22 +43,10 @@ export const ROUTES: Routes = [
     pathMatch: 'full',
     redirectTo: 'assets-lists'
   },
-  // { 
-  //   path: 'assets-lists',
-  //   component: AssetsListsComponent,
-  //   children: [{
-  //     path: 'upload',
-  //     component: UploadComponent
-  //   }]
-  // },
 
-  // {
-  //   path: 'upload',
-  //   component: UploadComponent,
-  // },
-  // { path: 'upload',
-  //   loadChildren: '../upload/upload.module#UploadModule'
-  // },
+  { path: 'assets-lists',
+    loadChildren: '../your-assets/your-assets.module#YourAssetsModule'
+  },
   {
     path: '**',
     component: NotFoundComponent,
@@ -74,6 +64,7 @@ export const ROUTES: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // NoopAnimationsModule,
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot(effects),
@@ -84,7 +75,7 @@ export const ROUTES: Routes = [
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    YourAssetsModule
+    // YourAssetsModule
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]

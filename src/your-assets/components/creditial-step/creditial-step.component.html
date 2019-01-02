@@ -1,0 +1,24 @@
+<!-- <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="2" rowspan="4" >
+
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="4" >
+            
+        </mat-grid-tile>
+</mat-grid-list> -->
+    <form [formGroup]="creditialForm">
+        <h2 class="mat-title">Enter Your Creditials</h2>
+
+        <h3 class="mat-subheading-2">Your email address and account Id will be registered in blockchain</h3>
+        <mat-form-field>
+            <input matInput placeholder="example@email.com" formControlName="email" required>
+        </mat-form-field>
+
+        <h3 class="mat-subheading-2">Your Account Id from Metamask </h3>
+        <mat-form-field>
+            <input matInput  formControlName="accountId" required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+    </form>

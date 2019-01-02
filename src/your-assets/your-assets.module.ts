@@ -1,4 +1,4 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,9 +9,11 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 // import { reducers } from './store';
-import * as fromStore from './store/reducers/index';
+import * as reducersfromStore from './store/reducers/index';
 // import reducers from './store';
 // import { reducer } from './store/reducers';
+import * as effectsfromStore from './store/effects/index';
+
 
 import {
   MatButtonModule,
@@ -20,23 +22,23 @@ import {
   MatDialogModule,
   MatListModule,
   MatStepperModule,
+  MatGridListModule,
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule } from '@angular/material';
 
-// import { UploadComponent } from './components/upload/upload.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { SteppersComponent } from './containers/steppers/steppers.component';
 import { AssetsListsComponent } from './containers/assets-lists/assets-lists.component';
+import { CreditialStepComponent } from './components/creditial-step/creditial-step.component';
+import { HashStepComponent } from './components/hash-step/hash-step.component';
+import { ConfirmStepComponent } from './components/confirm-step/confirm-step.component';
 
 export const ROUTES: Routes = [
-  { 
-    path: 'assets-lists',
+
+  {
+    path: '',
     component: AssetsListsComponent,
-    children: [{
-      path: 'upload',
-      component: DialogComponent
-    }]
   },
 
   {
@@ -48,22 +50,27 @@ export const ROUTES: Routes = [
 @NgModule({
     declarations: [
       AssetsListsComponent,
-      // UploadComponent,
       DialogComponent,
-      SteppersComponent
+      SteppersComponent,
+      CreditialStepComponent,
+      HashStepComponent,
+      ConfirmStepComponent
     ],
     imports: [
       CommonModule,
       ReactiveFormsModule,
-      BrowserAnimationsModule,
-      RouterModule.forRoot(ROUTES),
-      StoreModule.forFeature('yourassets', fromStore.reducers),
+      // BrowserAnimationsModule,
+      RouterModule.forChild(ROUTES),
+      // RouterModule.forRoot(ROUTES),
+      StoreModule.forFeature('yourassets', reducersfromStore.reducers),
+      EffectsModule.forFeature(effectsfromStore.effects),
       MatButtonModule,
       MatToolbarModule,
       MatCardModule,
       MatDialogModule,
       MatListModule,
       MatStepperModule,
+      MatGridListModule,
       MatFormFieldModule,
       MatInputModule,
       MatProgressSpinnerModule
@@ -72,7 +79,9 @@ export const ROUTES: Routes = [
       // AssetsListsComponent
     ],
     entryComponents: [DialogComponent], // Add the DialogComponent as entry component
-    providers: []
+    providers: [
+
+    ]
   })
   export class YourAssetsModule { }
   
