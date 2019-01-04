@@ -27,7 +27,7 @@ export class LoadStepper implements Action {
 
 export class LoadStepperSuccess implements Action {
     readonly type = LOAD_STEPPER_SUCCESS;
-    // constructor(public payload: string) {}
+    constructor(public payload: string | Error) {}
 }
 
 // export type UploadAction = OpenUploadModal | CloseUploadModal | UploadAsset | PickAsset;

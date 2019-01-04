@@ -16,6 +16,16 @@ const envVariables = new webpack.DefinePlugin({
 
 module.exports = {
   module: {
+
+    // node: {
+    //   crypto: true,
+    //   http: true,
+    //   https: true,
+    //   os: true,
+    //   vm: true,
+    //   stream: true
+    // },
+    
     rules: [
       {
         test: /\.sol/,

@@ -59,3 +59,18 @@ Builder options:
               }
 ```
 In this example `externals` entry from `extra-webpack.config.js` will be prepended to `externals` entry from Angular CLI underlying webpack config.
+
+Add support for ng serve
+1 — Install @angular-builders/dev-server
+
+npm install --save-dev @angular-builders/dev-server
+
+2 — Add custom builder for serve in angular.json :
+
+In angular.json > project > architect > serve> builder replace current value with :
+ @angular-builders/dev-server:generic
+
+
+https://medium.com/@GrandSchtroumpf/angular-cli-and-web3-e5cb90885741
+
+https://stackoverflow.com/questions/51087330/angular-6-many-cant-resolve-errors-crypto-fs-http-https-net-path-stream

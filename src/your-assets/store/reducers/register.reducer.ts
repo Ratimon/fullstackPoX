@@ -2,11 +2,13 @@ import * as fromRegister from '../actions/register.action';
 
 export interface RegisterState {
     imageurl : string;
+    account : string | Error;
     isloaded : boolean;
 }
 
 export const initialState : RegisterState = {
     imageurl : '',
+    account : '',
     isloaded : false
 }
 
@@ -24,9 +26,10 @@ export function reducer(
         }
 
         case fromRegister.LOAD_STEPPER_SUCCESS: {
-            // const imageurl = action.payload;
+            const account = action.payload;
             return {
                 ...state,
+                account : account,
                 isloaded : true
             }
         }

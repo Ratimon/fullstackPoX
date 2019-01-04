@@ -14,11 +14,11 @@ import { mimeType } from "./mime-type.validator";
 import * as fromServices from '../../services';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss']
+  selector: 'app-upload-dialog',
+  templateUrl: './upload-dialog.component.html',
+  styleUrls: ['./upload-dialog.component.scss']
 })
-export class DialogComponent implements OnInit {
+export class UploadDialogComponent implements OnInit {
 
   form: FormGroup;
   isLoaded: boolean = false;
@@ -27,7 +27,7 @@ export class DialogComponent implements OnInit {
   @Output() picked = new EventEmitter<String>();
 
   constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
+    public dialogRef: MatDialogRef<UploadDialogComponent>,
     // private router: Router,
     private location: Location,
     // private store: Store<fromStore.RegisterState>,

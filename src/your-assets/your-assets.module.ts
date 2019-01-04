@@ -27,7 +27,8 @@ import {
   MatInputModule,
   MatProgressSpinnerModule } from '@angular/material';
 
-import { DialogComponent } from './components/dialog/dialog.component';
+import { UploadDialogComponent } from './components/upload-dialog/upload-dialog.component';
+import { MetamaskDialogComponent } from './components/metamask-dialog/metamask-dialog.component';
 import { SteppersComponent } from './containers/steppers/steppers.component';
 import { AssetsListsComponent } from './containers/assets-lists/assets-lists.component';
 import { CreditialStepComponent } from './components/creditial-step/creditial-step.component';
@@ -50,11 +51,12 @@ export const ROUTES: Routes = [
 @NgModule({
     declarations: [
       AssetsListsComponent,
-      DialogComponent,
+      UploadDialogComponent,
       SteppersComponent,
       CreditialStepComponent,
       HashStepComponent,
-      ConfirmStepComponent
+      ConfirmStepComponent,
+      MetamaskDialogComponent
     ],
     imports: [
       CommonModule,
@@ -78,7 +80,10 @@ export const ROUTES: Routes = [
     exports: [
       // AssetsListsComponent
     ],
-    entryComponents: [DialogComponent], // Add the DialogComponent as entry component
+    entryComponents: [
+      UploadDialogComponent,
+      MetamaskDialogComponent
+    ],
     providers: [
 
     ]

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { Router } from "@angular/router";
-import { Observable, Subject } from "rxjs";
-
+// import { Observable, Subject } from "rxjs";
 import { LocalStorage } from '@ngx-pwa/local-storage';
 
 
@@ -15,7 +14,7 @@ export class AssetsService {
   isLoaded : boolean = false;
   imagePreview: string;
 
-  private subject = new Subject<any>();
+  // private subject = new Subject<any>();
 
   constructor(
     // private router: Router,

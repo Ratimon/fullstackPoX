@@ -29,14 +29,17 @@
     "@ngrx/store-devtools": "^6.1.2",
     "@ngx-pwa/local-storage": "^6.2.1",
     "core-js": "^2.5.4",
+    "ethereum-address": "0.0.4",
     "hammerjs": "^2.0.8",
     "ngrx-store-freeze": "^0.2.4",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.3.3",
+    "web3": "^1.0.0-beta.37",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^7.1.1",
+    "@angular-builders/dev-server": "^7.1.1",
     "@angular-devkit/build-angular": "~0.11.1",
     "@angular/cli": "~6.1.0",
     "@angular/compiler-cli": "^6.1.0",
